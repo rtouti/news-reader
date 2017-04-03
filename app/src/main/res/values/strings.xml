@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">News</string>
+    <string name="main_activity_label">All</string>
+    <string name="login">Log in</string>
+    <string name="username">Username :</string>
+    <string name="password">Password :</string>
+    <string name="drawer_connection">Connection</string>
+    <string name="drawer_news">News</string>
+    <string name="drawer_science">Science</string>
+    <string name="drawer_sports">Sports</string>
+    <string name="drawer_economy">Economy</string>
+    <string name="drawer_summaries">Summaries</string>
+    <string name="comments_label">Comments</string>
+    <string name="tab_hot">Hot</string>
+    <string name="tab_new">New</string>
+    <string name="tab_top">Top</string>
+
+    <string name="my_account">My account</string>
+</resources>
