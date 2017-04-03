@@ -12,6 +12,7 @@ import com.reddit.client.redditclient2.api.endpoints.SubredditLinksEndpoint;
 import com.reddit.client.redditclient2.api.things.Link;
 import com.reddit.client.redditclient2.controllers.activities.MainActivity;
 import com.reddit.client.redditclient2.controllers.async.PostFetchingTask;
+import com.reddit.client.redditclient2.utils.TextSizes;
 import com.squareup.picasso.Picasso;
 
 /**
@@ -85,17 +86,16 @@ public class ArticlesAdapter extends BaseAdapter {
         }
 
         TextView text = (TextView)convertView.findViewById(R.id.article_title);
-        text.setTextSize(20.0f);
+        text.setTextSize(TextSizes.ARTICLES_TITLES_SIZE);
 
         ImageView image = (ImageView)convertView.findViewById(R.id.article_image);
 
         if(!this.loaded && position == this.activity.getLinks().size()){
-            text.setText("Loading...");
+            text.setText(R.string.loading);
             image.setVisibility(View.GONE);
 
-            //Si c'est un list item de loading, rendre invisible les flèches
-            convertView.findViewById(R.id.upvote_arrow).setVisibility(View.GONE);
-            convertView.findViewById(R.id.downvote_arrow).setVisibility(View.GONE);
+            //Si c'est un list item de loading, rendre invisible le bouton favori
+            //convertView.findViewById(R.id.favorite).setVisibility(View.GONE);
 
         }
         else {
@@ -117,9 +117,8 @@ public class ArticlesAdapter extends BaseAdapter {
                 image.setVisibility(View.GONE);
             }
 
-            //Si ce n'est pas un list item de loading, rendre visible les flèches
-            convertView.findViewById(R.id.upvote_arrow).setVisibility(View.VISIBLE);
-            convertView.findViewById(R.id.downvote_arrow).setVisibility(View.VISIBLE);
+            //Si ce n'est pas un list item de loading, rendre visible le bouton favori
+            //convertView.findViewById(R.id.favorite).setVisibility(View.VISIBLE);
 
             this.subredditEndpoint = this.task.getSubredditLinksEndpoint();
         }

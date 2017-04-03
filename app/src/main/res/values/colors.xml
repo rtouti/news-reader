@@ -4,6 +4,10 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
 
+    <color name="darkColorPrimary">#444444</color>
+    <color name="darkColorPrimaryDark">#555555</color>
+    <color name="darkColorAccent">#777777</color>
+
     <color name="list_item_grey">#DDDDDD</color>
     <color name="list_item_white">#EEEEEE</color>
 </resources>

@@ -4,6 +4,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -13,6 +14,8 @@ import com.reddit.client.redditclient2.api.things.Link;
 import com.reddit.client.redditclient2.controllers.activities.ArticlesActivity;
 import com.reddit.client.redditclient2.controllers.activities.MainActivity;
 import com.reddit.client.redditclient2.controllers.async.CommentsFetchingTask;
+import com.reddit.client.redditclient2.controllers.listeners.AddCommentOnClickListener;
+import com.reddit.client.redditclient2.utils.TextSizes;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -75,9 +78,12 @@ public class CommentsAdapter extends BaseAdapter {
             title.setText(link.title);
             author.setText(link.author);
             score.setText(""+link.score);
-            title.setTextSize(20.0f);
-            author.setTextSize(15.0f);
-            score.setTextSize(15.0f);
+            title.setTextSize(TextSizes.COMMENTS_TITLES_SIZE = 20.0f);
+            author.setTextSize(TextSizes.COMMENTS_AUTHOR_SIZE = 15.0f);
+            score.setTextSize(TextSizes.COMMENTS_SCORE_SIZE = 15.0f);
+
+            ImageButton add_comment = (ImageButton)convertView.findViewById(R.id.add_comment);
+            add_comment.setOnClickListener(new AddCommentOnClickListener(activity));
 
             String path = link.thumbnail;
             ImageView image = (ImageView)convertView.findViewById(R.id.article_image);

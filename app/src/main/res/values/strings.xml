@@ -15,5 +15,13 @@
     <string name="tab_new">New</string>
     <string name="tab_top">Top</string>
 
-    <string name="my_account">My account</string>
+    <string name="my_account">Mon compte</string>
+
+    <string name="preference">Préférences</string>
+    <string name="sorting">Tri</string>
+    <string name="text_size">Texte</string>
+
+    <string name="loading">Chargement...</string>
+
+    <string name="search_text">Recherche...</string>
 </resources>

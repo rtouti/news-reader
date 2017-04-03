@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        if(!RedditClient.CONNECTED && intent != null && intent.getAction().equals(Intent.ACTION_VIEW)){
+        if(!RedditClient.CONNECTED && intent != null && intent.getAction() != null && intent.getAction().equals(Intent.ACTION_VIEW)){
             Uri uri = intent.getData();
             String error = uri.getQueryParameter("error");
             //Si pas d'erreur
@@ -118,8 +118,17 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
-            case R.id.settings:
-                Toast.makeText(this, "Setting!", Toast.LENGTH_LONG).show();
+            case R.id.preference_menu:
+                setTheme(R.style.DarkAppTheme);
+                Intent intent = new Intent(this, MainActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                break;
+            case R.id.sorting_menu:
+                Toast.makeText(this, "Tri!", Toast.LENGTH_LONG).show();
+                break;
+            case R.id.text_size_menu:
+                Toast.makeText(this, "Taille du texte!", Toast.LENGTH_LONG).show();
                 break;
             default:
                 break;

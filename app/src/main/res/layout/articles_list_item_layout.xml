@@ -9,18 +9,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@android:drawable/arrow_up_float"
-            android:id="@+id/upvote_arrow" />
-
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@android:drawable/arrow_down_float"
-            android:id="@+id/downvote_arrow" />
-
     </LinearLayout>
 
     <TextView

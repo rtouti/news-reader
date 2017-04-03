@@ -33,9 +33,6 @@ public class ArticlesActivity extends AppCompatActivity {
         ListView comments = (ListView)findViewById(R.id.article_comments);
         comments.setAdapter(adapter);
         comments.setOnItemClickListener(new CommentsOnItemClickListener(this));
-
-        ImageButton add_comment = (ImageButton)findViewById(R.id.add_comment);
-        add_comment.setOnClickListener(new AddCommentOnClickListener(this));
     }
 
     public Link getLink(){

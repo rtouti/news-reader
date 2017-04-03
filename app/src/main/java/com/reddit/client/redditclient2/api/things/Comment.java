@@ -37,7 +37,7 @@ public class Comment extends Thing implements Votable, Created {
 
     public ArrayList<Comment> replies(){
         if(replies == null)
-            return null;
+            return new ArrayList<Comment>();
 
         ArrayList<Comment> comments = new ArrayList<>();
 
