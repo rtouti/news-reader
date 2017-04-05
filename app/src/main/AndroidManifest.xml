@@ -15,6 +15,7 @@
             android:label="@string/main_activity_label"
             android:parentActivityName=".controllers.activities.LoginActivity">
             <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />
 

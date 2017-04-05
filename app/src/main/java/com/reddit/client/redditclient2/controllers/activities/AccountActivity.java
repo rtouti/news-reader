@@ -13,6 +13,7 @@ public class AccountActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTheme(MainActivity.THEME);
         setContentView(R.layout.activity_account);
 
         Intent intent = getIntent();

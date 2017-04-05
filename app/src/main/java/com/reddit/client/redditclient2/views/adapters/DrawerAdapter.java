@@ -1,6 +1,7 @@
 package com.reddit.client.redditclient2.views.adapters;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 import com.reddit.client.redditclient2.R;
 import com.reddit.client.redditclient2.api.RedditClient;
 import com.reddit.client.redditclient2.controllers.activities.MainActivity;
+import com.reddit.client.redditclient2.utils.TextSizes;
 
 /**
  * Created by raouf on 17-03-20.
@@ -42,12 +44,23 @@ public class DrawerAdapter extends BaseAdapter {
             convertView = activity.getLayoutInflater().inflate(android.R.layout.simple_list_item_1, parent, false);
 
         TextView text_view = (TextView)convertView.findViewById(android.R.id.text1);
-        text_view.setTextSize(25.0f);
+        text_view.setTextSize(TextSizes.DRAWER_ELEMENTS_SIZE);
         if(position == 0 && RedditClient.CONNECTED){
             text_view.setText(R.string.my_account);
         }
         else {
             text_view.setText(drawerItems[position]);
+        }
+
+        //Si c'est le theme normal
+        if(MainActivity.THEME == MainActivity.NORMAL_THEME){
+            convertView.setBackgroundColor(Color.WHITE);
+            text_view.setTextColor(Color.BLACK);
+        }
+        //Si c'est le dark theme
+        else {
+            convertView.setBackgroundColor(Color.GRAY);
+            text_view.setTextColor(Color.WHITE);
         }
 
         return convertView;

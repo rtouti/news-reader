@@ -31,6 +31,10 @@ import com.reddit.client.redditclient2.views.adapters.DrawerAdapter;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
+    public static int THEME = R.style.AppTheme;
+    public static int DARK_THEME = R.style.DarkAppTheme;
+    public static int NORMAL_THEME = R.style.AppTheme;
+
     private ListView articles_list_view;
     private ArticlesAdapter articles_adapter;
     private DrawerAdapter drawer_adapter;
@@ -66,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTheme(THEME);
         setContentView(R.layout.activity_main);
 
         articles_list_view = (ListView)findViewById(R.id.articles_list_view);
@@ -116,10 +121,20 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    public boolean onSearchRequested() {
+        Toast.makeText(this, "Search!", Toast.LENGTH_LONG).show();
+
+        return true;
+    }
+
+
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case R.id.preference_menu:
-                setTheme(R.style.DarkAppTheme);
+                //Changer les theme
+                THEME = (THEME == NORMAL_THEME) ? DARK_THEME : NORMAL_THEME;
                 Intent intent = new Intent(this, MainActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);

@@ -2,6 +2,7 @@ package com.reddit.client.redditclient2.api;
 
 import com.reddit.client.redditclient2.api.endpoints.MeEndpoint;
 import com.reddit.client.redditclient2.api.endpoints.PostCommentEndpoint;
+import com.reddit.client.redditclient2.api.endpoints.SearchEnpoint;
 import com.reddit.client.redditclient2.api.endpoints.SubredditLinksEndpoint;
 import com.reddit.client.redditclient2.api.things.Thing;
 import com.reddit.client.redditclient2.controllers.async.PostFetchingTask;
@@ -79,6 +80,10 @@ public class RedditClient {
 
     public MeEndpoint me(){
         return new MeEndpoint();
+    }
+
+    public SearchEnpoint search(String subreddit, String searchQuery){
+        return new SearchEnpoint(subreddit, searchQuery);
     }
 
 }

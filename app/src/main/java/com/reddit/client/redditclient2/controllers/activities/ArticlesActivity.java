@@ -24,6 +24,7 @@ public class ArticlesActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTheme(MainActivity.THEME);
         setContentView(R.layout.activity_article);
 
         Intent intent = getIntent();
