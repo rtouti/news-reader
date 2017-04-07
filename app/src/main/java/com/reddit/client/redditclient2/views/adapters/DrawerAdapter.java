@@ -59,7 +59,7 @@ public class DrawerAdapter extends BaseAdapter {
         }
         //Si c'est le dark theme
         else {
-            convertView.setBackgroundColor(Color.GRAY);
+            convertView.setBackgroundColor(Color.DKGRAY);
             text_view.setTextColor(Color.WHITE);
         }
 

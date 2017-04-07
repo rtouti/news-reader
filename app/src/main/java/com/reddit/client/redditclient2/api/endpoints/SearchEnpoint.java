@@ -1,5 +1,7 @@
 package com.reddit.client.redditclient2.api.endpoints;
 
+import android.util.Log;
+
 import com.reddit.client.redditclient2.api.things.Link;
 import com.reddit.client.redditclient2.http.HttpRequestUtil;
 
@@ -22,9 +24,9 @@ public class SearchEnpoint implements Endpoint {
     public SearchEnpoint(String subreddit, String searchQuery){
         this.subreddit = subreddit;
 
-        url = REDDIT_BASE_URL + "/" + subreddit + "/search.json";
+        url = REDDIT_BASE_URL + "/r/" + subreddit + "/search.json";
         http = new HttpRequestUtil(url);
-
+        Log.i("DEBUG", url);
         http.addQueryParameter("q", searchQuery);
         http.makeRequest();
         body = http.getBodyString();

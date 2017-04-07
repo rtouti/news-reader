@@ -78,9 +78,9 @@ public class CommentsAdapter extends BaseAdapter {
             title.setText(link.title);
             author.setText(link.author);
             score.setText(""+link.score);
-            title.setTextSize(TextSizes.COMMENTS_TITLES_SIZE = 20.0f);
-            author.setTextSize(TextSizes.COMMENTS_AUTHOR_SIZE = 15.0f);
-            score.setTextSize(TextSizes.COMMENTS_SCORE_SIZE = 15.0f);
+            title.setTextSize(TextSizes.FIRST_COMMENT_TITLES_SIZE);
+            author.setTextSize(TextSizes.FIRST_COMMENT_AUTHOR_SIZE);
+            score.setTextSize(TextSizes.FIRST_COMMENT_SCORE_SIZE);
 
             ImageButton add_comment = (ImageButton)convertView.findViewById(R.id.add_comment);
             add_comment.setOnClickListener(new AddCommentOnClickListener(activity));
@@ -106,6 +106,9 @@ public class CommentsAdapter extends BaseAdapter {
             body.setText(comment.body);
             author.setText(comment.author);
             score.setText(""+comment.score);
+            body.setTextSize(TextSizes.COMMENTS_BODY_SIZE);
+            author.setTextSize(TextSizes.COMMENTS_AUTHOR_SIZE);
+            score.setTextSize(TextSizes.COMMENTS_SCORE_SIZE);
         }
 
         return convertView;

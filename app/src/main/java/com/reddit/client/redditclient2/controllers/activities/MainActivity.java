@@ -1,10 +1,14 @@
 package com.reddit.client.redditclient2.controllers.activities;
 
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -35,12 +39,13 @@ public class MainActivity extends AppCompatActivity {
     public static int DARK_THEME = R.style.DarkAppTheme;
     public static int NORMAL_THEME = R.style.AppTheme;
 
+    public static String currentSubreddit = "news";
+
     private ListView articles_list_view;
     private ArticlesAdapter articles_adapter;
     private DrawerAdapter drawer_adapter;
     private ArrayList<Link> links;
     private boolean connected = false;
-    private String currentSubreddit = "news";
 
     private String[] sortingItems = {
             "hot",
@@ -73,6 +78,11 @@ public class MainActivity extends AppCompatActivity {
         setTheme(THEME);
         setContentView(R.layout.activity_main);
 
+        //Quand on change de theme, le tab "hot" redevient selectionné par défaut alors
+        //on remet le tri à "SORTING_HOT"
+        PostFetchingTask.CURRENT_SORTING = SubredditLinksEndpoint.SORITNG_HOT;
+        PostFetchingTask.CURRENT_TIME_SORTING = SubredditLinksEndpoint.TIME_SORTING_DAY;
+
         articles_list_view = (ListView)findViewById(R.id.articles_list_view);
         articles_adapter = new ArticlesAdapter(this);
         articles_list_view.setAdapter(articles_adapter);
@@ -80,6 +90,14 @@ public class MainActivity extends AppCompatActivity {
 
         drawer_adapter = new DrawerAdapter(this, drawerItems);
         ListView drawer_list_view = (ListView)findViewById(R.id.drawer_list_view);
+
+        if(THEME == NORMAL_THEME){
+            drawer_list_view.setBackgroundColor(Color.WHITE);
+        }
+        else {
+            drawer_list_view.setBackgroundColor(Color.DKGRAY);
+        }
+
         drawer_list_view.setAdapter(drawer_adapter);
         drawer_list_view.setOnItemClickListener(new DrawerOnItemClickListener(this, drawerItemsStrings));
 
@@ -117,15 +135,19 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.options_menu, menu);
 
+        SearchManager searchManager = (SearchManager)getSystemService(Context.SEARCH_SERVICE);
+        SearchView searchView = (SearchView)menu.findItem(R.id.menu_search).getActionView();
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+
         return true;
     }
 
-    @Override
+    /*@Override
     public boolean onSearchRequested() {
         Toast.makeText(this, "Search!", Toast.LENGTH_LONG).show();
 
         return true;
-    }
+    }*/
 
 
 
@@ -133,7 +155,9 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case R.id.preference_menu:
-                //Changer les theme
+
+
+                //Changer les themes
                 THEME = (THEME == NORMAL_THEME) ? DARK_THEME : NORMAL_THEME;
                 Intent intent = new Intent(this, MainActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

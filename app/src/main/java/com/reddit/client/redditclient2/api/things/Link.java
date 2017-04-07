@@ -45,7 +45,18 @@ public class Link extends Thing implements Votable, Created {
     }
 
     public ArrayList<Comment> comments(){
-        String url = Endpoint.REDDIT_BASE_URL + this.permalink + ".json";
+        String url;
+        if(permalink.contains("?")){
+            url = Endpoint.REDDIT_BASE_URL + this.permalink;
+            //On doit faire ça parce que parfois le permalink contient des arguments de
+            //requête http et on doit alors mettre le ".json" avant ces arguments
+            //(avant le "?"), on ne peut pas juste le concaténer à la fin de l'url
+            String[] url_parts = url.split("\\?");
+            url = url_parts[0] + ".json?" + url_parts[1];
+        }
+        else {
+            url = Endpoint.REDDIT_BASE_URL + this.permalink + ".json";
+        }
         HttpRequestUtil http = new HttpRequestUtil(url);
         http.makeRequest();
         String body = http.getBodyString();
@@ -54,6 +65,7 @@ public class Link extends Thing implements Votable, Created {
 
         Log.i("DEBUG", "body : "+body);
         Log.i("DEBUG", "url : "+url);
+        Log.i("DEBUG", "permalink : "+permalink);
         try {
             JSONArray children = new JSONArray(body)
                     .getJSONObject(1)

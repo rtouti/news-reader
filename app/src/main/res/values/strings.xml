@@ -22,6 +22,7 @@
     <string name="text_size">Texte</string>
 
     <string name="loading">Chargement...</string>
+    <string name="no_results">Aucun résultat</string>
 
     <string name="search_text">Recherche...</string>
     <string name="search_hint">Recherche...</string>

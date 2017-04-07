@@ -59,8 +59,9 @@ public class ArticlesAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        if(convertView == null)
+        if(convertView == null) {
             convertView = activity.getLayoutInflater().inflate(R.layout.articles_list_item_layout, parent, false);
+        }
 
         if(position == 0 && !this.loaded){
             this.task = new PostFetchingTask(this.activity, this.activity.getCurrentSubreddit(), this);
