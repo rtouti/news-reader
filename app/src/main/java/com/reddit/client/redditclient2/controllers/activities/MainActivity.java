@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.util.Log;
@@ -47,11 +48,11 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<Link> links;
     private boolean connected = false;
 
-    private String[] sortingItems = {
-            "hot",
-            "new",
-            "top"
-    };
+    /*private String[] sortingItems = {
+            getResources().getString(R.string.tab_hot),
+            getResources().getString(R.string.tab_new),
+            getResources().getString(R.string.tab_top)
+    };*/
 
     private int drawerItems[] = {
             R.string.drawer_connection,
@@ -59,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
             R.string.drawer_science,
             R.string.drawer_sports,
             R.string.drawer_economy,
+            R.string.drawer_technology,
             R.string.drawer_summaries,
     };
 
@@ -68,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
             "science",
             "sports",
             "economy",
+            "technology",
             "autotldr"
     };
 
@@ -98,8 +101,9 @@ public class MainActivity extends AppCompatActivity {
             drawer_list_view.setBackgroundColor(Color.DKGRAY);
         }
 
+        DrawerLayout drawer_layout = (DrawerLayout)findViewById(R.id.activity_main);
         drawer_list_view.setAdapter(drawer_adapter);
-        drawer_list_view.setOnItemClickListener(new DrawerOnItemClickListener(this, drawerItemsStrings));
+        drawer_list_view.setOnItemClickListener(new DrawerOnItemClickListener(this, drawerItemsStrings, drawer_layout));
 
         TabLayout tab_layout = (TabLayout)findViewById(R.id.tab_layout);
         tab_layout.addOnTabSelectedListener(new SortingTabsOnTabSelectedListener(this));
@@ -203,6 +207,10 @@ public class MainActivity extends AppCompatActivity {
     public String getCurrentSubreddit(){
         return currentSubreddit;
     }
+
+    /*public String[] getSortingItems(){
+        return sortingItems;
+    }*/
 
     public void changeCurrentSubreddit(String subreddit){
         links.clear();

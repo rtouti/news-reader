@@ -106,6 +106,16 @@ public class SubredditLinksEndpoint implements Endpoint {
                 link.selftext = childData.getString("selftext");
                 link.subreddit = childData.getString("subreddit");
                 link.thumbnail = childData.getString("thumbnail");
+                try {
+                    link.highResPicture = childData.getJSONObject("preview")
+                            .getJSONArray("images")
+                            .getJSONObject(0)
+                            .getJSONObject("source")
+                            .getString("url");
+                }
+                catch(JSONException e){
+                    link.highResPicture = "";
+                }
                 link.title = childData.getString("title");
                 link.url = childData.getString("url");
                 links.add(link);

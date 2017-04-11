@@ -21,13 +21,16 @@ public class SearchEnpoint implements Endpoint {
     private HttpRequestUtil http;
     private String body;
 
-    public SearchEnpoint(String subreddit, String searchQuery){
+    public SearchEnpoint(String subreddit, String searchQuery, boolean restrictOnSubreddit){
         this.subreddit = subreddit;
 
         url = REDDIT_BASE_URL + "/r/" + subreddit + "/search.json";
         http = new HttpRequestUtil(url);
         Log.i("DEBUG", url);
         http.addQueryParameter("q", searchQuery);
+        if(restrictOnSubreddit){
+            http.addQueryParameter("restrict_sr", "on");
+        }
         http.makeRequest();
         body = http.getBodyString();
     }

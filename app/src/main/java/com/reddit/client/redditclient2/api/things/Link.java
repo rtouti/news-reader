@@ -35,6 +35,7 @@ public class Link extends Thing implements Votable, Created {
     public String selftext;        //Can be empty
     public String subreddit;
     public String thumbnail;       //"self" if self post
+    public String highResPicture;
     public String title;
     public String url;             //Link of this post, permalink if self post
 

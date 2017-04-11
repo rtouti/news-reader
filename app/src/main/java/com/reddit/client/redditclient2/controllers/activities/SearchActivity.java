@@ -4,6 +4,7 @@ import android.app.SearchManager;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -79,11 +80,13 @@ public class SearchActivity extends AppCompatActivity {
     private void handleIntent(Intent intent){
         if(intent.getAction().equals(Intent.ACTION_SEARCH)){
             String searchQuery = intent.getStringExtra(SearchManager.QUERY);
+            getSupportActionBar().setTitle(searchQuery);
+
+            //Remplacer les espaces par des "+"
+            searchQuery = searchQuery.replace(" ", "+");
 
             SearchTask task = new SearchTask(this);
             task.execute(MainActivity.currentSubreddit, searchQuery);
-
-            getSupportActionBar().setTitle(searchQuery);
         }
     }
 }

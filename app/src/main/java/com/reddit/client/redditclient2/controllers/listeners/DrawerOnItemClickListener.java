@@ -2,6 +2,7 @@ package com.reddit.client.redditclient2.controllers.listeners;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.support.v4.widget.DrawerLayout;
 import android.view.View;
 import android.widget.AdapterView;
 
@@ -17,10 +18,12 @@ import com.reddit.client.redditclient2.controllers.async.AccountFetchingTask;
 public class DrawerOnItemClickListener implements AdapterView.OnItemClickListener {
     private MainActivity activity;
     private String[] drawerItemsStrings;
+    private DrawerLayout drawer;
 
-    public DrawerOnItemClickListener(MainActivity activity, String[] drawerItemsStrings){
+    public DrawerOnItemClickListener(MainActivity activity, String[] drawerItemsStrings, DrawerLayout drawer){
         this.activity = activity;
         this.drawerItemsStrings = drawerItemsStrings;
+        this.drawer = drawer;
     }
 
     @Override
@@ -38,6 +41,7 @@ public class DrawerOnItemClickListener implements AdapterView.OnItemClickListene
         }
         else {
             activity.changeCurrentSubreddit(drawerItemsStrings[position]);
+            drawer.closeDrawers();
         }
     }
 

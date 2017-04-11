@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -58,19 +59,29 @@
             <TextView
                 android:text="@string/comments_label"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:id="@+id/comments_label"
                 android:paddingTop="5dp"
                 android:textStyle="normal|bold"
                 android:textSize="20sp"
                 android:background="#CCC"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:layout_height="40dp"
+                android:paddingBottom="5dp"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingRight="0dp"
+                android:gravity="center_vertical" />
 
             <ImageButton
                 android:layout_width="wrap_content"
-                android:layout_height="32dp"
                 app:srcCompat="@android:drawable/ic_menu_add"
-                android:id="@+id/add_comment" />
+                android:id="@+id/add_comment"
+                android:layout_height="40dp"
+                android:padding="0dp"
+                android:paddingBottom="0dp"
+                android:paddingLeft="0dp"
+                android:paddingRight="0dp"
+                android:paddingTop="0dp" />
         </LinearLayout>
 
     </LinearLayout>

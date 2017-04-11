@@ -28,7 +28,7 @@ public class SearchTask extends AsyncTask<String, Object, ArrayList<Link>> {
     protected ArrayList<Link> doInBackground(String... params) {
         client = new RedditClient();
 
-        ArrayList<Link> links = client.search(params[0], params[1]).links(100);
+        ArrayList<Link> links = client.search(params[0], params[1], true).links(100);
 
         return links;
     }

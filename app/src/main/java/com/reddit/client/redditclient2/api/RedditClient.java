@@ -82,8 +82,8 @@ public class RedditClient {
         return new MeEndpoint();
     }
 
-    public SearchEnpoint search(String subreddit, String searchQuery){
-        return new SearchEnpoint(subreddit, searchQuery);
+    public SearchEnpoint search(String subreddit, String searchQuery, boolean restrictOnSubreddit){
+        return new SearchEnpoint(subreddit, searchQuery, restrictOnSubreddit);
     }
 
 }
