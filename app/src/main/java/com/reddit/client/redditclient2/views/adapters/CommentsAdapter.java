@@ -85,7 +85,7 @@ public class CommentsAdapter extends BaseAdapter {
             ImageButton add_comment = (ImageButton)convertView.findViewById(R.id.add_comment);
             add_comment.setOnClickListener(new AddCommentOnClickListener(activity));
 
-            String path = link.highResPicture;
+            String path = link.highResPicture != null ? link.highResPicture : "";
             ImageView image = (ImageView)convertView.findViewById(R.id.article_image);
             if(!path.equals("") && !path.equals("self") && !path.equals("image") && !path.equals("default")){
                 Picasso.with(activity.getApplicationContext())
