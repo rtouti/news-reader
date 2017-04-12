@@ -36,11 +36,11 @@ import com.reddit.client.redditclient2.views.adapters.DrawerAdapter;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-    public static int THEME = R.style.AppTheme;
     public static int DARK_THEME = R.style.DarkAppTheme;
     public static int NORMAL_THEME = R.style.AppTheme;
+    public static int THEME = DARK_THEME;
 
-    public static String currentSubreddit = "news";
+    public static String currentSubreddit = "all";
 
     private ListView articles_list_view;
     private ArticlesAdapter articles_adapter;
@@ -56,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
 
     private int drawerItems[] = {
             R.string.drawer_connection,
+            R.string.drawer_all,
             R.string.drawer_news,
             R.string.drawer_science,
             R.string.drawer_sports,
@@ -66,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
 
     private String drawerItemsStrings[] = {
             "Connection",
+            "all",
             "news",
             "science",
             "sports",

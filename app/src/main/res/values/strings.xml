@@ -5,6 +5,7 @@
     <string name="username">Username :</string>
     <string name="password">Password :</string>
     <string name="drawer_connection">Connection</string>
+    <string name="drawer_all">All</string>
     <string name="drawer_news">News</string>
     <string name="drawer_science">Science</string>
     <string name="drawer_sports">Sports</string>
@@ -27,4 +28,7 @@
 
     <string name="search_text">Recherche...</string>
     <string name="search_hint">Recherche...</string>
+
+    <string name="news_button">News</string>
+    <string name="favorites_button">Favorites</string>
 </resources>
