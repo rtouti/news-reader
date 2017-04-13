@@ -13,6 +13,7 @@ import com.reddit.client.redditclient2.api.things.Comment;
 import com.reddit.client.redditclient2.api.things.Link;
 import com.reddit.client.redditclient2.controllers.activities.ArticlesActivity;
 import com.reddit.client.redditclient2.controllers.activities.MainActivity;
+import com.reddit.client.redditclient2.controllers.async.ArticleTextFetchingTask;
 import com.reddit.client.redditclient2.controllers.async.CommentsFetchingTask;
 import com.reddit.client.redditclient2.controllers.listeners.AddCommentOnClickListener;
 import com.reddit.client.redditclient2.utils.TextSizes;
@@ -31,12 +32,15 @@ public class CommentsAdapter extends BaseAdapter {
     private boolean commentsLoaded = false;
     private int count = 0;
 
+
     public CommentsAdapter(ArticlesActivity activity){
         this.activity = activity;
         this.link = activity.getLink();
 
         CommentsFetchingTask task = new CommentsFetchingTask(this);
+
         task.execute();
+
     }
 
     @Override
@@ -73,10 +77,13 @@ public class CommentsAdapter extends BaseAdapter {
 
         if(position == 0){
             TextView title = (TextView)convertView.findViewById(R.id.article_title);
+            TextView articleView = (TextView)convertView.findViewById(R.id.article_text);
             TextView author = (TextView)convertView.findViewById(R.id.article_author);
             TextView score = (TextView)convertView.findViewById(R.id.article_score);
             title.setText(link.title);
+            activity.parseArticle(link.url, articleView);
             author.setText(link.author);
+
             score.setText(""+link.score);
             title.setTextSize(TextSizes.FIRST_COMMENT_TITLES_SIZE);
             author.setTextSize(TextSizes.FIRST_COMMENT_AUTHOR_SIZE);

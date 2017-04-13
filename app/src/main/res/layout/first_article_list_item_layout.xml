@@ -14,12 +14,21 @@
         android:layout_weight="1" />
 
     <TextView
-        android:text="TextView"
-        android:layout_width="match_parent"
         android:id="@+id/article_title"
-        android:textSize="20sp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1" />
+        android:layout_weight="1"
+        android:text="TextView"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/article_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:padding="10dp"
+        android:text="Chargement de l'article..."
+        android:textSize="18sp" />
 
     <LinearLayout
         android:orientation="vertical"
