@@ -61,10 +61,13 @@ public class MainActivity extends AppCompatActivity {
             R.string.drawer_connection,
             R.string.drawer_all,
             R.string.drawer_news,
+            R.string.drawer_worldnews,
             R.string.drawer_science,
             R.string.drawer_sports,
             R.string.drawer_economy,
             R.string.drawer_technology,
+            R.string.drawer_cinema,
+            R.string.drawer_books,
             R.string.drawer_summaries,
     };
 
@@ -72,10 +75,13 @@ public class MainActivity extends AppCompatActivity {
             "Connection",
             "all",
             "news",
+            "worldnews",
             "science",
             "sports",
             "economy",
             "technology",
+            "cinema",
+            "books",
             "autotldr"
     };
 

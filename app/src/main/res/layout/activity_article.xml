@@ -33,18 +33,23 @@
             android:id="@+id/text_size_up_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@android:drawable/arrow_up_float" />
+            android:background="@android:color/transparent"
+            app:srcCompat="@drawable/a_plus" />
 
         <ImageButton
             android:id="@+id/text_size_down_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@android:drawable/arrow_down_float" />
+            android:background="@android:color/transparent"
+            android:paddingLeft="5dp"
+            app:srcCompat="@drawable/a_moins" />
 
         <ImageButton
             android:id="@+id/share_button"
             android:layout_width="wrap_content"
             android:layout_height="32dp"
+            android:background="@android:color/transparent"
+            android:paddingLeft="15dp"
             app:srcCompat="@android:drawable/ic_menu_share" />
     </LinearLayout>
 
