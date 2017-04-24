@@ -61,6 +61,7 @@ public class SubredditLinksEndpoint implements Endpoint {
         if(!PostFetchingTask.CURRENT_TIME_SORTING.equals(SORITNG_HOT)){
             this.http.addQueryParameter("t", PostFetchingTask.CURRENT_TIME_SORTING);
         }
+        Log.i("DEBUG", "time sorting : "+PostFetchingTask.CURRENT_TIME_SORTING);
 
         this.http.makeRequest();
         this.body = http.getBodyString();

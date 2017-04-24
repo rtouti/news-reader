@@ -16,6 +16,7 @@ import com.reddit.client.redditclient2.controllers.activities.MainActivity;
 import com.reddit.client.redditclient2.controllers.async.ArticleTextFetchingTask;
 import com.reddit.client.redditclient2.controllers.async.CommentsFetchingTask;
 import com.reddit.client.redditclient2.controllers.listeners.AddCommentOnClickListener;
+import com.reddit.client.redditclient2.controllers.listeners.LinkListener;
 import com.reddit.client.redditclient2.utils.TextSizes;
 import com.squareup.picasso.Picasso;
 
@@ -86,10 +87,16 @@ public class CommentsAdapter extends BaseAdapter {
             TextView articleView = (TextView)convertView.findViewById(R.id.article_text);
             TextView author = (TextView)convertView.findViewById(R.id.article_author);
             TextView score = (TextView)convertView.findViewById(R.id.article_score);
+
+            TextView webLink = (TextView)convertView.findViewById(R.id.article_link);
+
             title.setText(link.title);
             articleView.setText(activity.getArticleText());
             author.setText(link.author);
             score.setText(""+link.score);
+
+            webLink.setText(R.string.web_link);
+            webLink.setOnClickListener(new LinkListener(activity));
 
             title.setTextSize(TextSizes.FIRST_COMMENT_TITLES_SIZE);
             articleView.setTextSize(TextSizes.FIRST_COMMENT_ARTICLE_SIZE);

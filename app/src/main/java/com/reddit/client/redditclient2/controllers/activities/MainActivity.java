@@ -90,10 +90,6 @@ public class MainActivity extends AppCompatActivity {
 
     private String[] sortingItemsStrings = new String[6];
 
-    private boolean[] sortingItemsSelection = new boolean[] {
-        true, false, false, false, false, false
-    };
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -200,9 +196,9 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.sorting_menu:
                 AlertDialog alert = new AlertDialog.Builder(this)
-                        .setMultiChoiceItems(
+                        .setSingleChoiceItems(
                                 sortingItemsStrings,
-                                sortingItemsSelection,
+                                0,
                                 new OnSortingMultiChoiceClickListener(this))
                         .create();
                 alert.show();

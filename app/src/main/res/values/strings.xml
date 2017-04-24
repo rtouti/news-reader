@@ -9,25 +9,25 @@
     <string name="drawer_news">News</string>
     <string name="drawer_science">Science</string>
     <string name="drawer_sports">Sports</string>
-    <string name="drawer_economy">Economie</string>
-    <string name="drawer_technology">Technologie</string>
-    <string name="drawer_summaries">Résumés</string>
-    <string name="comments_label">Commentaires</string>
+    <string name="drawer_economy">Economy</string>
+    <string name="drawer_technology">Technology</string>
+    <string name="drawer_summaries">Summary</string>
+    <string name="comments_label">Comments</string>
     <string name="tab_hot">Hot</string>
     <string name="tab_new">New</string>
     <string name="tab_top">Top</string>
 
-    <string name="my_account">Mon compte</string>
+    <string name="my_account">My Account</string>
 
-    <string name="preference">Préférences</string>
-    <string name="sorting">Tri</string>
-    <string name="text_size">Texte</string>
+    <string name="preference">Change theme</string>
+    <string name="sorting">Sorting</string>
+    <string name="text_size">Text</string>
 
-    <string name="loading">Chargement...</string>
-    <string name="no_results">Aucun résultat</string>
+    <string name="loading">Charging...</string>
+    <string name="no_results">No Result</string>
 
-    <string name="search_text">Recherche...</string>
-    <string name="search_hint">Recherche...</string>
+    <string name="search_text">Searching...</string>
+    <string name="search_hint">Searching...</string>
 
     <string name="news_button">News</string>
     <string name="favorites_button">Favorites</string>
@@ -47,4 +47,5 @@
     <string name="comment_sorting_old">Old</string>
     <string name="not_connected">You are not connected!</string>
     <string name="email_chooser">Choose an email app</string>
+    <string name="web_link">Go to link</string>
 </resources>

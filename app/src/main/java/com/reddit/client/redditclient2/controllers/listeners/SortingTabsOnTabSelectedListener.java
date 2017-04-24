@@ -24,8 +24,7 @@ public class SortingTabsOnTabSelectedListener implements TabLayout.OnTabSelected
     public void onTabSelected(TabLayout.Tab tab) {
         String sorting = "";
         //String[] sortingItems = activity.getSortingItems();
-        Toast.makeText(activity, Locale.getDefault().getDisplayLanguage(), Toast.LENGTH_LONG).show();
-        if(Locale.getDefault().getDisplayLanguage().equals("Français")){
+        /*if(Locale.getDefault().getDisplayLanguage().equals("Français")){
             switch (tab.getText().toString()) {
                 case "Populaires":
                     sorting = SubredditLinksEndpoint.SORITNG_HOT;
@@ -41,7 +40,7 @@ public class SortingTabsOnTabSelectedListener implements TabLayout.OnTabSelected
             }
         }
         else if(Locale.getDefault().getDisplayLanguage().equals("English")) {
-            switch (tab.getText().toString()) {
+          */  switch (tab.getText().toString()) {
                 case "Hot":
                     sorting = SubredditLinksEndpoint.SORITNG_HOT;
                     break;
@@ -50,11 +49,11 @@ public class SortingTabsOnTabSelectedListener implements TabLayout.OnTabSelected
                     break;
                 case "Top":
                     sorting = SubredditLinksEndpoint.SORITNG_TOP;
+                    Toast.makeText(activity, sorting, Toast.LENGTH_LONG).show();
                     break;
                 default:
                     break;
             }
-        }
 
         Toast.makeText(activity, sorting, Toast.LENGTH_LONG).show();
 

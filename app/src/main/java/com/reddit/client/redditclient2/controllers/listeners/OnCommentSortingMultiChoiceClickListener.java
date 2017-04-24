@@ -21,5 +21,7 @@ public class OnCommentSortingMultiChoiceClickListener implements DialogInterface
     @Override
     public void onClick(DialogInterface dialog, int which) {
         activity.updateComment(activity.getSortingItems()[which]);
+
+        dialog.dismiss();
     }
 }
