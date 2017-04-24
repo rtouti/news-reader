@@ -1,5 +1,6 @@
 package com.reddit.client.redditclient2.controllers.listeners;
 
+import android.content.Intent;
 import android.view.View;
 import android.widget.Toast;
 
@@ -46,6 +47,16 @@ public class TextSizeAndShareOnClickListener implements View.OnClickListener {
         }
         else if(v.getId() == R.id.share_button){
             Toast.makeText(activity, activity.getLink().url, Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(Intent.ACTION_SEND);
+            intent.putExtra(Intent.EXTRA_SUBJECT, "Reddit : " + activity.getLink().title);
+            intent.putExtra(Intent.EXTRA_TEXT, activity.getLink().url);
+            intent.setType("text/plain");
+            activity.startActivityForResult(Intent.createChooser(
+                    intent,
+                    activity.getResources().getString(R.string.email_chooser)),
+                    1
+            );
+
         }
     }
 
