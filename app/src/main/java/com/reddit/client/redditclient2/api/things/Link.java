@@ -3,6 +3,7 @@ package com.reddit.client.redditclient2.api.things;
 import android.util.Log;
 
 import com.reddit.client.redditclient2.api.endpoints.Endpoint;
+import com.reddit.client.redditclient2.controllers.async.CommentsFetchingTask;
 import com.reddit.client.redditclient2.http.HttpRequestUtil;
 
 import org.json.JSONArray;
@@ -59,6 +60,9 @@ public class Link extends Thing implements Votable, Created {
             url = Endpoint.REDDIT_BASE_URL + this.permalink + ".json";
         }
         HttpRequestUtil http = new HttpRequestUtil(url);
+        if(!CommentsFetchingTask.CURRENT_SORTING.equals("")){
+            http.addQueryParameter("sort", CommentsFetchingTask.CURRENT_SORTING);
+        }
         http.makeRequest();
         String body = http.getBodyString();
 

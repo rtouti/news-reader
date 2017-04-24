@@ -2,12 +2,14 @@ package com.reddit.client.redditclient2.controllers.activities;
 
 import android.app.SearchManager;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.util.Log;
@@ -29,6 +31,7 @@ import com.reddit.client.redditclient2.controllers.async.AuthenticationTask;
 import com.reddit.client.redditclient2.controllers.async.PostFetchingTask;
 import com.reddit.client.redditclient2.controllers.listeners.ArticlesOnItemClickListener;
 import com.reddit.client.redditclient2.controllers.listeners.DrawerOnItemClickListener;
+import com.reddit.client.redditclient2.controllers.listeners.OnSortingMultiChoiceClickListener;
 import com.reddit.client.redditclient2.controllers.listeners.SortingTabsOnTabSelectedListener;
 import com.reddit.client.redditclient2.views.adapters.ArticlesAdapter;
 import com.reddit.client.redditclient2.views.adapters.DrawerAdapter;
@@ -76,12 +79,38 @@ public class MainActivity extends AppCompatActivity {
             "autotldr"
     };
 
+    private String[] sortingItems = {
+            SubredditLinksEndpoint.TIME_SORTING_HOUR,
+            SubredditLinksEndpoint.TIME_SORTING_DAY,
+            SubredditLinksEndpoint.TIME_SORTING_WEEK,
+            SubredditLinksEndpoint.TIME_SORTING_MONTH,
+            SubredditLinksEndpoint.TIME_SORTING_YEAR,
+            SubredditLinksEndpoint.TIME_SORTING_ALL_TIME
+    };
+
+    private String[] sortingItemsStrings = new String[6];
+
+    private boolean[] sortingItemsSelection = new boolean[] {
+        true, false, false, false, false, false
+    };
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setTheme(THEME);
         setContentView(R.layout.activity_main);
+
+
+        //On initialise le tableau ici parce qu'il faut avoir crée l'activité
+        //avant de pouvoir utiliser la méthode getResources()
+        sortingItemsStrings[0] = getResources().getString(R.string.time_sorting_hour);
+        sortingItemsStrings[1] = getResources().getString(R.string.time_sorting_day);
+        sortingItemsStrings[2] = getResources().getString(R.string.time_sorting_week);
+        sortingItemsStrings[3] = getResources().getString(R.string.time_sorting_month);
+        sortingItemsStrings[4] = getResources().getString(R.string.time_sorting_year);
+        sortingItemsStrings[5] = getResources().getString(R.string.time_sorting_all_time);
+
 
         //Quand on change de theme, le tab "hot" redevient selectionné par défaut alors
         //on remet le tri à "SORTING_HOT"
@@ -170,7 +199,13 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
                 break;
             case R.id.sorting_menu:
-                Toast.makeText(this, "Tri!", Toast.LENGTH_LONG).show();
+                AlertDialog alert = new AlertDialog.Builder(this)
+                        .setMultiChoiceItems(
+                                sortingItemsStrings,
+                                sortingItemsSelection,
+                                new OnSortingMultiChoiceClickListener(this))
+                        .create();
+                alert.show();
                 break;
             case R.id.text_size_menu:
                 Toast.makeText(this, "Taille du texte!", Toast.LENGTH_LONG).show();
@@ -182,7 +217,11 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    
+
+
+    public String[] getSortingItems(){
+        return sortingItems;
+    }
 
     public ArrayList<Link> getLinks(){
         return links;

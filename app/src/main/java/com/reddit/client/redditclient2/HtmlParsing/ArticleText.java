@@ -76,10 +76,15 @@ public class ArticleText {
             text = new SpannableStringBuilder(this.text);
             title.setSpan(new StyleSpan(Typeface.BOLD), 0, title.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
             title.setSpan(new RelativeSizeSpan(1.5f), 0, title.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-            result.append(title);
-            result.append("\n\n");
-            result.append(text);
-            result.append("\n\n\n");
+            if (!(title.equals("") || text.equals("\n"))){
+                result.append(title);
+                result.append("\n\n");
+            }
+
+            if (!(text.equals("") || text.equals("\n"))){
+                result.append(text);
+                result.append("\n\n\n");
+            }
 
             return result;
         }
@@ -149,7 +154,8 @@ public class ArticleText {
         SpannableStringBuilder text;
         //spannableStringBuilder est une chaine de caractère avec la possibilité de modifier l'affichage
         //de certaine partie
-        SpannableStringBuilder title = new SpannableStringBuilder(this.title);
+
+        SpannableStringBuilder title = new SpannableStringBuilder();
 
 
         SpannableStringBuilder result = new SpannableStringBuilder();

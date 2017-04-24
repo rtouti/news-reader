@@ -74,8 +74,8 @@ public class RedditClient {
         return new SubredditLinksEndpoint(subreddit);
     }
 
-    public void reply(Thing to){
-        PostCommentEndpoint endpoint = new PostCommentEndpoint(to.name);
+    public void reply(String comment_text, Thing to){
+        PostCommentEndpoint endpoint = new PostCommentEndpoint(comment_text, to.name);
     }
 
     public MeEndpoint me(){

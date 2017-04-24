@@ -94,6 +94,7 @@ public class ArticlesAdapter extends BaseAdapter {
         if(!this.loaded && position == this.activity.getLinks().size()){
             text.setText(R.string.loading);
             image.setVisibility(View.GONE);
+            convertView.setMinimumHeight(50);
 
             //Si c'est un list item de loading, rendre invisible le bouton favori
             //convertView.findViewById(R.id.favorite).setVisibility(View.GONE);

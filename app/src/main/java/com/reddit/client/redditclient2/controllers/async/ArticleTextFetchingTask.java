@@ -10,6 +10,7 @@ import android.widget.Toast;
 import com.reddit.client.redditclient2.HtmlParsing.ArticleText;
 import com.reddit.client.redditclient2.HtmlParsing.HtmlParser;
 import com.reddit.client.redditclient2.HtmlParsing.NewsSite;
+import com.reddit.client.redditclient2.controllers.activities.ArticlesActivity;
 import com.reddit.client.redditclient2.controllers.activities.MainActivity;
 
 /**
@@ -18,12 +19,12 @@ import com.reddit.client.redditclient2.controllers.activities.MainActivity;
 
 public class ArticleTextFetchingTask extends AsyncTask<String, TextView, CharSequence> {
 
-    private Context context;
-    private TextView articleView;
+    private ArticlesActivity context;
+    private String articleText;
     private String url;
 
-    public ArticleTextFetchingTask(TextView view, Context context, String url){
-        this.articleView = view;
+    public ArticleTextFetchingTask(String articleText, ArticlesActivity context, String url){
+        this.articleText = articleText;
         this.context = context;
         this.url = url;
     }
@@ -77,7 +78,9 @@ public class ArticleTextFetchingTask extends AsyncTask<String, TextView, CharSeq
     @Override
     protected void onPostExecute(CharSequence articleText) {
 
-        articleView.setText(articleText);
+        //articleView.setText(articleText);
+        context.setArticleText(articleText);
+        context.getAdapter().notifyDataSetChanged();
 
     }
 }

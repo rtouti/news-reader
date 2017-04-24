@@ -29,6 +29,7 @@ public class MeEndpoint implements Endpoint {
 
     public Account account(){
         this.http = new HttpRequestUtil(ME_URL);
+        http.addHeader("User-Agent", "Android:232903:0.0.1 (by /u/enhancedelegance");
         this.http.addHeader(
                 "Authorization",
                 "bearer "+ RedditClient.ACCESS_TOKEN

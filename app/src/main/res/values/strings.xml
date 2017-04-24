@@ -31,4 +31,18 @@
 
     <string name="news_button">News</string>
     <string name="favorites_button">Favorites</string>
+
+    <string name="add_comment">Add a comment</string>
+
+    <string name="time_sorting_hour">Hour</string>
+    <string name="time_sorting_day">Day</string>
+    <string name="time_sorting_week">Week</string>
+    <string name="time_sorting_month">Month</string>
+    <string name="time_sorting_year">Year</string>
+    <string name="time_sorting_all_time">All time</string>
+
+    <string name="comment_sorting_appreciated">Appreciated</string>
+    <string name="comment_sorting_new">New</string>
+    <string name="comment_sorting_controversial">Controversial</string>
+    <string name="comment_sorting_old">Old</string>
 </resources>

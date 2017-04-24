@@ -31,14 +31,16 @@ public class CommentsAdapter extends BaseAdapter {
     private ArrayList<Comment> comments;
     private boolean commentsLoaded = false;
     private int count = 0;
+    private String articleText;
 
 
     public CommentsAdapter(ArticlesActivity activity){
         this.activity = activity;
         this.link = activity.getLink();
 
-        CommentsFetchingTask task = new CommentsFetchingTask(this);
+        activity.parseArticle(link.url, articleText);
 
+        CommentsFetchingTask task = new CommentsFetchingTask(this);
         task.execute();
 
     }
@@ -75,17 +77,22 @@ public class CommentsAdapter extends BaseAdapter {
             }
         //}
 
+        if(position == 0 && !commentsLoaded){
+
+        }
+
         if(position == 0){
             TextView title = (TextView)convertView.findViewById(R.id.article_title);
             TextView articleView = (TextView)convertView.findViewById(R.id.article_text);
             TextView author = (TextView)convertView.findViewById(R.id.article_author);
             TextView score = (TextView)convertView.findViewById(R.id.article_score);
             title.setText(link.title);
-            activity.parseArticle(link.url, articleView);
+            articleView.setText(activity.getArticleText());
             author.setText(link.author);
-
             score.setText(""+link.score);
+
             title.setTextSize(TextSizes.FIRST_COMMENT_TITLES_SIZE);
+            articleView.setTextSize(TextSizes.FIRST_COMMENT_ARTICLE_SIZE);
             author.setTextSize(TextSizes.FIRST_COMMENT_AUTHOR_SIZE);
             score.setTextSize(TextSizes.FIRST_COMMENT_SCORE_SIZE);
 

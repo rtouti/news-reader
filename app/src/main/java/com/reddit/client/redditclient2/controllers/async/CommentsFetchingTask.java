@@ -13,6 +13,12 @@ import java.util.ArrayList;
  */
 
 public class CommentsFetchingTask extends AsyncTask<Object, Object, ArrayList<Comment>> {
+    public static String CURRENT_SORTING = "";
+    public static String SORTING_APPRECIATED = "";
+    public static String SORTING_NEW = "new";
+    public static String SORTING_CONTROVERSIAL = "controversial";
+    public static String SORTING_OLD = "old";
+
     private CommentsAdapter adapter;
 
     public CommentsFetchingTask(CommentsAdapter adapter){

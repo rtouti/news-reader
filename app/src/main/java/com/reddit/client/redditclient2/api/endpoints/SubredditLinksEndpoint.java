@@ -96,6 +96,8 @@ public class SubredditLinksEndpoint implements Endpoint {
                     link.likes = null;
                 }
 
+                link.name = childData.getString("name");
+
                 link.created = childData.getLong("created");
                 link.created_utc = childData.getLong("created_utc");
                 link.author = childData.getString("author");
