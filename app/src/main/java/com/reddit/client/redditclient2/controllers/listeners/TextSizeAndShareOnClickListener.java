@@ -44,6 +44,9 @@ public class TextSizeAndShareOnClickListener implements View.OnClickListener {
 
             activity.getAdapter().notifyDataSetChanged();
         }
+        else if(v.getId() == R.id.share_button){
+            Toast.makeText(activity, activity.getLink().url, Toast.LENGTH_LONG).show();
+        }
     }
 
 }

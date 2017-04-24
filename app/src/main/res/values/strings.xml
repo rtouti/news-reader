@@ -45,4 +45,5 @@
     <string name="comment_sorting_new">New</string>
     <string name="comment_sorting_controversial">Controversial</string>
     <string name="comment_sorting_old">Old</string>
+    <string name="not_connected">You are not connected!</string>
 </resources>

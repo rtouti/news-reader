@@ -21,6 +21,7 @@ import com.reddit.client.redditclient2.HtmlParsing.ArticleText;
 import com.reddit.client.redditclient2.HtmlParsing.HtmlParser;
 import com.reddit.client.redditclient2.HtmlParsing.NewsSite;
 import com.reddit.client.redditclient2.R;
+import com.reddit.client.redditclient2.api.RedditClient;
 import com.reddit.client.redditclient2.api.endpoints.PostCommentEndpoint;
 import com.reddit.client.redditclient2.api.endpoints.SubredditLinksEndpoint;
 import com.reddit.client.redditclient2.api.things.Link;
@@ -104,19 +105,23 @@ public class ArticlesActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case R.id.add_comment_menu:
-                AddCommentTask task = new AddCommentTask(this);
-                task.execute("Test", link);
+                if(RedditClient.CONNECTED){
+                    AddCommentTask task = new AddCommentTask(this);
+                    task.execute("Test", link);
+                }
+                else {
+                    Toast.makeText(this, R.string.not_connected, Toast.LENGTH_LONG).show();
+                }
+                break;
             case R.id.comment_sorting_menu:
-                Log.i("DEBUG", "comment sorting");
                 AlertDialog alert = new AlertDialog.Builder(this)
                         .setSingleChoiceItems(
                                 sortingItemsStrings,
                                 0,
                                 new OnCommentSortingMultiChoiceClickListener(this))
                         .create();
-                Log.i("DEBUG", "comment sorting");
                 alert.show();
-                Log.i("DEBUG", "comment sorting");
+                break;
             default:
                 break;
         }
