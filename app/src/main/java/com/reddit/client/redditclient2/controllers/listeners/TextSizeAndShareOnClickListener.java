@@ -46,7 +46,7 @@ public class TextSizeAndShareOnClickListener implements View.OnClickListener {
             activity.getAdapter().notifyDataSetChanged();
         }
         else if(v.getId() == R.id.share_button){
-            Toast.makeText(activity, activity.getLink().url, Toast.LENGTH_LONG).show();
+            //Toast.makeText(activity, activity.getLink().url, Toast.LENGTH_LONG).show();
             Intent intent = new Intent(Intent.ACTION_SEND);
             intent.putExtra(Intent.EXTRA_SUBJECT, "Reddit : " + activity.getLink().title);
             intent.putExtra(Intent.EXTRA_TEXT, activity.getLink().url);

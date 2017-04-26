@@ -17,9 +17,9 @@
     <string name="drawer_books">Livres</string>
     <string name="drawer_summaries">Résumé</string>
     <string name="comments_label">Commentaires</string>
-    <string name="tab_hot">Hot</string>
-    <string name="tab_new">New</string>
-    <string name="tab_top">Top</string>
+    <string name="tab_hot">Populaires</string>
+    <string name="tab_new">Récents</string>
+    <string name="tab_top">Meilleurs</string>
 
     <string name="my_account">Mon Compte</string>
 
