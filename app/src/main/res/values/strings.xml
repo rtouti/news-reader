@@ -52,4 +52,5 @@
     <string name="web_link">Go to link</string>
     <string name="email_chooser">Choose an email app</string>
     <string name="failed_connection">Connection failed, please verify your internet connection.</string>
+    <string name="add_comment_button">Add comment</string>
 </resources>

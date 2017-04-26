@@ -210,9 +210,7 @@ public class MainActivity extends AppCompatActivity {
                         .create();
                 alert.show();
                 break;
-            case R.id.text_size_menu:
-                Toast.makeText(this, "Taille du texte!", Toast.LENGTH_LONG).show();
-                break;
+
             default:
                 break;
         }

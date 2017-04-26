@@ -35,6 +35,7 @@ import com.reddit.client.redditclient2.controllers.listeners.OnSortingMultiChoic
 import com.reddit.client.redditclient2.controllers.listeners.TextSizeAndShareOnClickListener;
 import com.reddit.client.redditclient2.views.adapters.ArticlesAdapter;
 import com.reddit.client.redditclient2.views.adapters.CommentsAdapter;
+import com.reddit.client.redditclient2.views.dialogs.AddCommentDialog;
 import com.squareup.picasso.Picasso;
 
 public class ArticlesActivity extends AppCompatActivity {
@@ -106,8 +107,8 @@ public class ArticlesActivity extends AppCompatActivity {
         switch (item.getItemId()){
             case R.id.add_comment_menu:
                 if(RedditClient.CONNECTED){
-                    AddCommentTask task = new AddCommentTask(this);
-                    task.execute("Test", link);
+                    AddCommentDialog alert = new AddCommentDialog(this, this, link);
+                    alert.show();
                 }
                 else {
                     Toast.makeText(this, R.string.not_connected, Toast.LENGTH_LONG).show();

@@ -53,4 +53,6 @@
     <string name="web_link">Allez vers le lien</string>
     <string name="email_chooser">Choissisez un application de mail</string>
     <string name="failed_connection">Échec de connection, vérifiez votre connection internet.</string>
+    <string name="add_comment_button">Ajouter un commentaire</string>
+
 </resources>

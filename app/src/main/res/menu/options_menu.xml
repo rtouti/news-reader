@@ -5,9 +5,6 @@
         android:id="@+id/preference_menu" />
     <item android:title="@string/sorting"
         android:id="@+id/sorting_menu" />
-    <item android:title="@string/text_size"
-        android:id="@+id/text_size_menu"
-        android:icon="@mipmap/ic_launcher" />
 
     <item android:id="@+id/menu_search"
         android:title="@string/search_text"
