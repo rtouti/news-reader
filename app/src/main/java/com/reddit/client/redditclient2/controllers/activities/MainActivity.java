@@ -143,6 +143,8 @@ public class MainActivity extends AppCompatActivity {
         tab_layout.addOnTabSelectedListener(new SortingTabsOnTabSelectedListener(this));
 
         this.links = new ArrayList<>();
+
+
     }
 
     @Override

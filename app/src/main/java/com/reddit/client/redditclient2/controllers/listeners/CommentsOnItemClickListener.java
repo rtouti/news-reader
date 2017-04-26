@@ -24,6 +24,7 @@ public class CommentsOnItemClickListener implements AdapterView.OnItemClickListe
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        if(position == 0) return;
         if(HttpRequestUtil.isConnected(activity)) {
             Comment comment = activity.getAdapter().getComments().get(position);
 

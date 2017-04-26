@@ -31,6 +31,7 @@ public class ArticlesOnItemClickListener implements AdapterView.OnItemClickListe
             Intent intent = new Intent(activity.getApplicationContext(), ArticlesActivity.class);
             intent.putExtra("link", link);
             activity.startActivity(intent);
+            //activity.findViewById(R)
         }
         
         else Toast.makeText(activity, R.string.failed_connection, Toast.LENGTH_LONG).show();
