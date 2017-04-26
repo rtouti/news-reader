@@ -72,7 +72,6 @@ public class ArticlesAdapter extends BaseAdapter {
         }
         else if(position == this.activity.getLinks().size()-1){
             this.loaded = false;
-
             this.task = new PostFetchingTask(this.activity, this.activity.getCurrentSubreddit(), this);
             this.task.setSubredditLinksEndpoint(this.subredditEndpoint);
 

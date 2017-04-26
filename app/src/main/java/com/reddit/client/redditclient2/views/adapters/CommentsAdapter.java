@@ -103,8 +103,6 @@ public class CommentsAdapter extends BaseAdapter {
             author.setTextSize(TextSizes.FIRST_COMMENT_AUTHOR_SIZE);
             score.setTextSize(TextSizes.FIRST_COMMENT_SCORE_SIZE);
 
-            ImageButton add_comment = (ImageButton)convertView.findViewById(R.id.add_comment);
-            add_comment.setOnClickListener(new AddCommentOnClickListener(activity));
 
             String path = link.highResPicture != null ? link.highResPicture : "";
             ImageView image = (ImageView)convertView.findViewById(R.id.article_image);

@@ -72,7 +72,7 @@ public class SearchResultsAdapter extends BaseAdapter {
         ImageView image = (ImageView)convertView.findViewById(R.id.article_image);
 
         if(!loaded){
-            text.setText(R.string.loading);
+            text.setText(R.string.search_text);
             image.setVisibility(View.GONE);
 
             return convertView;
