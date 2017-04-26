@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">NewsIt</string>
+    <string name="main_activity_label">NewsIt</string>
+    <string name="login">Connectez vous</string>
+    <string name="username">Nm d\'utilisateur :</string>
+    <string name="password">Mot de passe :</string>
+    <string name="drawer_connection">Connection</string>
+    <string name="drawer_all">Tous</string>
+    <string name="drawer_news">Nouvelles</string>
+    <string name="drawer_worldnews">Nouvelles mondiales</string>
+    <string name="drawer_science">Science</string>
+    <string name="drawer_sports">Sports</string>
+    <string name="drawer_economy">Economie</string>
+    <string name="drawer_technology">Technologie</string>
+    <string name="drawer_cinema">Cinéma</string>
+    <string name="drawer_books">Livres</string>
+    <string name="drawer_summaries">Résumé</string>
+    <string name="comments_label">Commentaires</string>
+    <string name="tab_hot">Hot</string>
+    <string name="tab_new">New</string>
+    <string name="tab_top">Top</string>
+
+    <string name="my_account">Mon Compte</string>
+
+    <string name="preference">Changer le theme</string>
+    <string name="sorting">Trier</string>
+    <string name="text_size">Texte</string>
+
+    <string name="loading">Téléchargement...</string>
+    <string name="no_results">Aucun résultats</string>
+
+    <string name="search_text">Recherche...</string>
+    <string name="search_hint">Recherche...</string>
+
+    <string name="news_button">Nouvelles</string>
+    <string name="favorites_button">Favoris</string>
+
+    <string name="add_comment">Ajouter un commentaire</string>
+
+    <string name="time_sorting_hour">Heure</string>
+    <string name="time_sorting_day">Jour</string>
+    <string name="time_sorting_week">Semaine</string>
+    <string name="time_sorting_month">Mois</string>
+    <string name="time_sorting_year">Année</string>
+    <string name="time_sorting_all_time">Tous les temps</string>
+
+    <string name="comment_sorting_appreciated">Apprecié</string>
+    <string name="comment_sorting_new">Nouveau</string>
+    <string name="comment_sorting_controversial">Controveré</string>
+    <string name="comment_sorting_old">Ancien</string>
+    <string name="not_connected">Vous n\'êtes pas connecté</string>
+    <string name="web_link">Allez vers le lien</string>
+    <string name="email_chooser">Choissisez un application de mail</string>
+    <string name="failed_connection">Écheque de connection, vérifiez votre connection internet.</string>
+</resources>

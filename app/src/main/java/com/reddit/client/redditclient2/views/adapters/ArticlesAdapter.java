@@ -6,12 +6,14 @@ import android.widget.BaseAdapter;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.reddit.client.redditclient2.R;
 import com.reddit.client.redditclient2.api.endpoints.SubredditLinksEndpoint;
 import com.reddit.client.redditclient2.api.things.Link;
 import com.reddit.client.redditclient2.controllers.activities.MainActivity;
 import com.reddit.client.redditclient2.controllers.async.PostFetchingTask;
+import com.reddit.client.redditclient2.http.HttpRequestUtil;
 import com.reddit.client.redditclient2.utils.TextSizes;
 import com.squareup.picasso.Picasso;
 
@@ -70,6 +72,7 @@ public class ArticlesAdapter extends BaseAdapter {
         }
         else if(position == this.activity.getLinks().size()-1){
             this.loaded = false;
+            Toast.makeText(activity, "" + HttpRequestUtil.isConnected(activity), Toast.LENGTH_LONG).show();
 
             this.task = new PostFetchingTask(this.activity, this.activity.getCurrentSubreddit(), this);
             this.task.setSubredditLinksEndpoint(this.subredditEndpoint);
@@ -104,9 +107,9 @@ public class ArticlesAdapter extends BaseAdapter {
             Link link = activity.getLinks().get(position);
 
             String title = link.title;
-            if(title.length() > 100){
+            /*if(title.length() > 100){
                 title = title.substring(0, 99) + "...";
-            }
+            }*/
             text.setText(title);
 
             String path = link.thumbnail;

@@ -6,6 +6,7 @@ import android.widget.Toast;
 import com.reddit.client.redditclient2.R;
 import com.reddit.client.redditclient2.api.endpoints.SubredditLinksEndpoint;
 import com.reddit.client.redditclient2.controllers.activities.MainActivity;
+import com.reddit.client.redditclient2.http.HttpRequestUtil;
 
 import java.util.Locale;
 
@@ -22,8 +23,9 @@ public class SortingTabsOnTabSelectedListener implements TabLayout.OnTabSelected
 
     @Override
     public void onTabSelected(TabLayout.Tab tab) {
-        String sorting = "";
-        //String[] sortingItems = activity.getSortingItems();
+        if(HttpRequestUtil.isConnected(activity)) {
+            String sorting = "";
+            //String[] sortingItems = activity.getSortingItems();
         /*if(Locale.getDefault().getDisplayLanguage().equals("Français")){
             switch (tab.getText().toString()) {
                 case "Populaires":
@@ -40,7 +42,8 @@ public class SortingTabsOnTabSelectedListener implements TabLayout.OnTabSelected
             }
         }
         else if(Locale.getDefault().getDisplayLanguage().equals("English")) {
-          */  switch (tab.getText().toString()) {
+          */
+            switch (tab.getText().toString()) {
                 case "Hot":
                     sorting = SubredditLinksEndpoint.SORITNG_HOT;
                     break;
@@ -55,13 +58,16 @@ public class SortingTabsOnTabSelectedListener implements TabLayout.OnTabSelected
                     break;
             }
 
-        Toast.makeText(activity, sorting, Toast.LENGTH_LONG).show();
+            Toast.makeText(activity, sorting, Toast.LENGTH_LONG).show();
 
-        activity.changeCurrentSubreddit(
-                activity.getCurrentSubreddit(),
-                sorting,
-                SubredditLinksEndpoint.TIME_SORTING_ALL_TIME
-        );
+            activity.changeCurrentSubreddit(
+                    activity.getCurrentSubreddit(),
+                    sorting,
+                    SubredditLinksEndpoint.TIME_SORTING_ALL_TIME
+            );
+        }
+        else Toast.makeText(activity, R.string.failed_connection, Toast.LENGTH_LONG).show();
+
     }
 
     @Override

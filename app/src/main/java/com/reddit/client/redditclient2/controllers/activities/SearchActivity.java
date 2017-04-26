@@ -13,6 +13,7 @@ import com.reddit.client.redditclient2.api.RedditClient;
 import com.reddit.client.redditclient2.api.things.Link;
 import com.reddit.client.redditclient2.controllers.async.SearchTask;
 import com.reddit.client.redditclient2.controllers.listeners.SearchResultsOnItemClickListener;
+import com.reddit.client.redditclient2.http.HttpRequestUtil;
 import com.reddit.client.redditclient2.views.adapters.SearchResultsAdapter;
 
 import java.util.ArrayList;
@@ -79,14 +80,18 @@ public class SearchActivity extends AppCompatActivity {
 
     private void handleIntent(Intent intent){
         if(intent.getAction().equals(Intent.ACTION_SEARCH)){
-            String searchQuery = intent.getStringExtra(SearchManager.QUERY);
-            getSupportActionBar().setTitle(searchQuery);
+            if(HttpRequestUtil.isConnected(this)) {
+                String searchQuery = intent.getStringExtra(SearchManager.QUERY);
+                getSupportActionBar().setTitle(searchQuery);
 
-            //Remplacer les espaces par des "+"
-            searchQuery = searchQuery.replace(" ", "+");
+                //Remplacer les espaces par des "+"
+                searchQuery = searchQuery.replace(" ", "+");
 
-            SearchTask task = new SearchTask(this);
-            task.execute(MainActivity.currentSubreddit, searchQuery);
+                SearchTask task = new SearchTask(this);
+                task.execute(MainActivity.currentSubreddit, searchQuery);
+            }
+            else Toast.makeText(this, R.string.failed_connection, Toast.LENGTH_LONG).show();
+
         }
     }
 }

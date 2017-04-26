@@ -1,5 +1,8 @@
 package com.reddit.client.redditclient2.http;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.util.Log;
 
 import okhttp3.MediaType;
@@ -61,4 +64,12 @@ public class HttpRequestUtil {
         return this.bodyString;
     }
 
+    public static boolean isConnected(Context context){
+        ConnectivityManager m =
+                (ConnectivityManager)context.getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        NetworkInfo info = m.getActiveNetworkInfo();
+
+        return info != null &&  info.isConnectedOrConnecting();
+    }
 }

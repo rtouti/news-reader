@@ -5,11 +5,14 @@ import android.net.Uri;
 import android.support.v4.widget.DrawerLayout;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Toast;
 
+import com.reddit.client.redditclient2.R;
 import com.reddit.client.redditclient2.api.RedditClient;
 import com.reddit.client.redditclient2.controllers.activities.AccountActivity;
 import com.reddit.client.redditclient2.controllers.activities.MainActivity;
 import com.reddit.client.redditclient2.controllers.async.AccountFetchingTask;
+import com.reddit.client.redditclient2.http.HttpRequestUtil;
 
 /**
  * Created by raouf on 17-03-20.
@@ -39,10 +42,12 @@ public class DrawerOnItemClickListener implements AdapterView.OnItemClickListene
                 task.execute();
             }
         }
-        else {
+        else if(HttpRequestUtil.isConnected(activity)){
             activity.changeCurrentSubreddit(drawerItemsStrings[position]);
             drawer.closeDrawers();
         }
+        else Toast.makeText(activity, R.string.failed_connection, Toast.LENGTH_LONG).show();
+
     }
 
 }
