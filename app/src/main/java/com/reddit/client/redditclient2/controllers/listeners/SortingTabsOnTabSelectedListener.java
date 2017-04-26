@@ -26,45 +26,48 @@ public class SortingTabsOnTabSelectedListener implements TabLayout.OnTabSelected
         if(HttpRequestUtil.isConnected(activity)) {
             String sorting = "";
             //String[] sortingItems = activity.getSortingItems();
-        /*if(Locale.getDefault().getDisplayLanguage().equals("Français")){
-            switch (tab.getText().toString()) {
-                case "Populaires":
-                    sorting = SubredditLinksEndpoint.SORITNG_HOT;
-                    break;
-                case "Récents":
-                    sorting = SubredditLinksEndpoint.SORITNG_NEW;
-                    break;
-                case "Meilleurs":
-                    sorting = SubredditLinksEndpoint.SORITNG_TOP;
-                    break;
-                default:
-                    break;
-            }
-        }
-        else if(Locale.getDefault().getDisplayLanguage().equals("English")) {
-          */
-            switch (tab.getText().toString()) {
-                case "Hot":
-                    sorting = SubredditLinksEndpoint.SORITNG_HOT;
-                    break;
-                case "New":
-                    sorting = SubredditLinksEndpoint.SORITNG_NEW;
-                    break;
-                case "Top":
-                    sorting = SubredditLinksEndpoint.SORITNG_TOP;
-                    Toast.makeText(activity, sorting, Toast.LENGTH_LONG).show();
-                    break;
-                default:
-                    break;
+            Toast.makeText(activity, Locale.getDefault().getDisplayLanguage(), Toast.LENGTH_LONG).show();
+            if (Locale.getDefault().getDisplayLanguage().equals("français")) {
+                switch (tab.getText().toString()) {
+                    case "Populaires":
+                        sorting = SubredditLinksEndpoint.SORITNG_HOT;
+                        break;
+                    case "Récents":
+                        sorting = SubredditLinksEndpoint.SORITNG_NEW;
+                        break;
+                    case "Meilleurs":
+                        sorting = SubredditLinksEndpoint.SORITNG_TOP;
+
+                        break;
+                    default:
+                        break;
+                }
+            } else if (Locale.getDefault().getDisplayLanguage().equals("English")) {
+
+                switch (tab.getText().toString()) {
+                    case "Hot":
+                        sorting = SubredditLinksEndpoint.SORITNG_HOT;
+                        break;
+                    case "New":
+                        sorting = SubredditLinksEndpoint.SORITNG_NEW;
+                        break;
+                    case "Top":
+                        sorting = SubredditLinksEndpoint.SORITNG_TOP;
+                        Toast.makeText(activity, sorting, Toast.LENGTH_LONG).show();
+                        break;
+                    default:
+                        break;
+                }
             }
 
-            Toast.makeText(activity, sorting, Toast.LENGTH_LONG).show();
+                Toast.makeText(activity, sorting, Toast.LENGTH_LONG).show();
 
-            activity.changeCurrentSubreddit(
-                    activity.getCurrentSubreddit(),
-                    sorting,
-                    SubredditLinksEndpoint.TIME_SORTING_ALL_TIME
-            );
+                activity.changeCurrentSubreddit(
+                        activity.getCurrentSubreddit(),
+                        sorting,
+                        SubredditLinksEndpoint.TIME_SORTING_ALL_TIME
+                );
+
         }
         else Toast.makeText(activity, R.string.failed_connection, Toast.LENGTH_LONG).show();
 

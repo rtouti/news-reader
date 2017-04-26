@@ -22,13 +22,13 @@ public class MainMenuOnClickListener implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        if(v.getId() == R.id.news_button){
+        /*if(v.getId() == R.id.news_button){
             if(HttpRequestUtil.isConnected(activity)) {
                 Intent intent = new Intent(activity, MainActivity.class);
                 activity.startActivity(intent);
             }
             else Toast.makeText(activity, R.string.failed_connection, Toast.LENGTH_LONG).show();
-        }
+        }*/
     }
 
 }

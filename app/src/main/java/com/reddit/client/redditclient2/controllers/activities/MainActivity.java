@@ -103,6 +103,7 @@ public class MainActivity extends AppCompatActivity {
         setTheme(THEME);
         setContentView(R.layout.activity_main);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
 
         //On initialise le tableau ici parce qu'il faut avoir crée l'activité
         //avant de pouvoir utiliser la méthode getResources()
