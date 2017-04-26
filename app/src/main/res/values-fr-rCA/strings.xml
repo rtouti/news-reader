@@ -52,5 +52,5 @@
     <string name="not_connected">Vous n\'êtes pas connecté</string>
     <string name="web_link">Allez vers le lien</string>
     <string name="email_chooser">Choissisez un application de mail</string>
-    <string name="failed_connection">Écheque de connection, vérifiez votre connection internet.</string>
+    <string name="failed_connection">Échec de connection, vérifiez votre connection internet.</string>
 </resources>
