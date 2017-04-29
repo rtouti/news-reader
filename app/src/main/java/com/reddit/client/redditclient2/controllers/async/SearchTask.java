@@ -6,6 +6,7 @@ import android.widget.Toast;
 
 import com.reddit.client.redditclient2.R;
 import com.reddit.client.redditclient2.api.RedditClient;
+import com.reddit.client.redditclient2.api.endpoints.SearchEnpoint;
 import com.reddit.client.redditclient2.api.things.Link;
 import com.reddit.client.redditclient2.controllers.activities.SearchActivity;
 import com.reddit.client.redditclient2.views.adapters.SearchResultsAdapter;

@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
             "economy",
             "technology",
             "cinema",
-            "books",
+            "Books",
             "autotldr"
     };
 

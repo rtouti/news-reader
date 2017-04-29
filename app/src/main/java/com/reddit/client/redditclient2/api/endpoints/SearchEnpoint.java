@@ -31,8 +31,14 @@ public class SearchEnpoint implements Endpoint {
         if(restrictOnSubreddit){
             http.addQueryParameter("restrict_sr", "on");
         }
+
         http.makeRequest();
         body = http.getBodyString();
+        if(body == null)
+            body = "";
+        Log.i("DEBUG2", searchQuery + body);
+
+
     }
 
     public ArrayList<Link> links(int limit){
@@ -75,6 +81,7 @@ public class SearchEnpoint implements Endpoint {
             }
         } catch (JSONException e) {
             e.printStackTrace();
+            Log.i("DEBUGE", e.toString());
         }
 
         return links;
