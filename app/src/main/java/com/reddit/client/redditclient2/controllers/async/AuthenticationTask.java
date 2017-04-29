@@ -57,5 +57,7 @@ public class AuthenticationTask extends AsyncTask<Object, Object, Object> {
         }
 
         activity.setConnected(true);
+        AccountFetchingTask accountTask = new AccountFetchingTask(activity);
+        accountTask.execute();
     }
 }

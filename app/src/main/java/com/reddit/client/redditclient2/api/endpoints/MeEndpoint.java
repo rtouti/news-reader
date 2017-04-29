@@ -16,7 +16,7 @@ import org.json.JSONObject;
  */
 
 public class MeEndpoint implements Endpoint {
-    public static final String ME_URL = RedditClient.REDDIT_OAUTH_URL + "api/v1/me/karma.json";
+    public static final String ME_URL = RedditClient.REDDIT_OAUTH_URL + "api/v1/me.json";
 
     private HttpRequestUtil http;
     private String body;
@@ -36,16 +36,19 @@ public class MeEndpoint implements Endpoint {
         );
         this.http.makeRequest();
         this.body = http.getBodyString();
-        Log.i("DEBUG", "body : "+this.body);
-        Log.i("DEBUG", "url : "+ME_URL);
+        Log.i("DEBUGaccount", "body : "+this.body);
+        Log.i("DEBUGaccount", "url : "+ME_URL);
 
         Account account = new Account();
         try {
             this.json = new JSONObject(this.body);
-            this.data = this.json.getJSONArray("data").getJSONObject(0);
 
-            account.comment_karma = data.getInt("comment_karma");
-            account.link_karma = data.getInt("link_karma");
+            this.data = this.json;
+
+            //account.comment_karma = data.getInt("comment_karma");
+            //account.link_karma = data.getInt("link_karma");
+            Log.i("DEBUGUSERNAME", data.getString("name"));
+            account.username = data.getString("name");
         } catch (JSONException e) {
             e.printStackTrace();
         }

@@ -37,10 +37,11 @@ public class DrawerOnItemClickListener implements AdapterView.OnItemClickListene
                 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
                 activity.startActivity(intent);
             }
-            else {
+
+            /*else {
                 AccountFetchingTask task = new AccountFetchingTask(activity);
                 task.execute();
-            }
+            }*/
         }
         else if(HttpRequestUtil.isConnected(activity)){
             activity.changeCurrentSubreddit(drawerItemsStrings[position]);

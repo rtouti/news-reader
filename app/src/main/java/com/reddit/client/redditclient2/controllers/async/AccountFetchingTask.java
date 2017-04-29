@@ -2,6 +2,10 @@ package com.reddit.client.redditclient2.controllers.async;
 
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.util.Log;
+import android.view.View;
+import android.widget.ListView;
+import android.widget.TextView;
 
 import com.reddit.client.redditclient2.api.RedditClient;
 import com.reddit.client.redditclient2.api.things.Account;
@@ -29,8 +33,13 @@ public class AccountFetchingTask extends AsyncTask<Object, Account, Account> {
 
     @Override
     protected void onPostExecute(Account account) {
-        Intent intent = new Intent(activity.getApplicationContext(), AccountActivity.class);
+        /*Intent intent = new Intent(activity.getApplicationContext(), AccountActivity.class);
         intent.putExtra("account", account);
-        activity.startActivity(intent);
+        activity.startActivity(intent);*/
+        activity.setAccount(account);
+        ListView list = activity.getListView();
+        TextView v = (TextView)list.getChildAt(list.getFirstVisiblePosition());
+        v.setText(account.username);
+        Log.i("DEBUG_ACCOUNT", account.username + "1");
     }
 }

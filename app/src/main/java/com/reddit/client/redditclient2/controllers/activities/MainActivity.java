@@ -26,7 +26,9 @@ import android.widget.Toast;
 import com.reddit.client.redditclient2.R;
 import com.reddit.client.redditclient2.api.RedditClient;
 import com.reddit.client.redditclient2.api.endpoints.SubredditLinksEndpoint;
+import com.reddit.client.redditclient2.api.things.Account;
 import com.reddit.client.redditclient2.api.things.Link;
+import com.reddit.client.redditclient2.controllers.async.AccountFetchingTask;
 import com.reddit.client.redditclient2.controllers.async.AuthenticationTask;
 import com.reddit.client.redditclient2.controllers.async.PostFetchingTask;
 import com.reddit.client.redditclient2.controllers.listeners.ArticlesOnItemClickListener;
@@ -47,9 +49,12 @@ public class MainActivity extends AppCompatActivity {
 
     private ListView articles_list_view;
     private ArticlesAdapter articles_adapter;
+    private ListView drawer_list_view;
     private DrawerAdapter drawer_adapter;
     private ArrayList<Link> links;
     private boolean connected = false;
+
+    private Account account;
 
     /*private String[] sortingItems = {
             getResources().getString(R.string.tab_hot),
@@ -126,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
         articles_list_view.setOnItemClickListener(new ArticlesOnItemClickListener(this));
 
         drawer_adapter = new DrawerAdapter(this, drawerItems);
-        ListView drawer_list_view = (ListView)findViewById(R.id.drawer_list_view);
+        drawer_list_view = (ListView)findViewById(R.id.drawer_list_view);
 
         if(THEME == NORMAL_THEME){
             drawer_list_view.setBackgroundColor(Color.WHITE);
@@ -143,6 +148,7 @@ public class MainActivity extends AppCompatActivity {
         tab_layout.addOnTabSelectedListener(new SortingTabsOnTabSelectedListener(this));
 
         this.links = new ArrayList<>();
+
 
 
     }
@@ -162,6 +168,7 @@ public class MainActivity extends AppCompatActivity {
                     String code = uri.getQueryParameter("code");
                     AuthenticationTask task = new AuthenticationTask(this, code);
                     task.execute();
+
                 }
             }
             //Si erreur
@@ -286,5 +293,16 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public void setAccount(Account account){
+        this.account = account;
+    }
+
+    public Account getAccount(){
+        return account;
+    }
+
+    public ListView getListView(){
+        return drawer_list_view;
+    }
 
 }
