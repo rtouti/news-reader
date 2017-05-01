@@ -53,4 +53,7 @@
     <string name="email_chooser">Choose an email app</string>
     <string name="failed_connection">Connection failed, please verify your internet connection.</string>
     <string name="add_comment_button">Add comment</string>
+    <string name="drawer_button_menu">drawer menu</string>
+    <string name="open">open</string>
+    <string name="close">close</string>
 </resources>

@@ -8,11 +8,14 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -56,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Account account;
 
+    private ActionBarDrawerToggle toggle;
     /*private String[] sortingItems = {
             getResources().getString(R.string.tab_hot),
             getResources().getString(R.string.tab_new),
@@ -108,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
         setTheme(THEME);
         setContentView(R.layout.activity_main);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+
 
         //On initialise le tableau ici parce qu'il faut avoir crée l'activité
         //avant de pouvoir utiliser la méthode getResources()
@@ -140,9 +144,24 @@ public class MainActivity extends AppCompatActivity {
             drawer_list_view.setBackgroundColor(Color.DKGRAY);
         }
 
-        DrawerLayout drawer_layout = (DrawerLayout)findViewById(R.id.activity_main);
+        final DrawerLayout drawer_layout = (DrawerLayout)findViewById(R.id.activity_main);
         drawer_list_view.setAdapter(drawer_adapter);
         drawer_list_view.setOnItemClickListener(new DrawerOnItemClickListener(this, drawerItemsStrings, drawer_layout));
+
+
+
+        toggle = new ActionBarDrawerToggle(this, drawer_layout,
+                R.string.open,
+                R.string.close);
+
+        drawer_layout.addDrawerListener(toggle);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
+
+
+
+
 
         TabLayout tab_layout = (TabLayout)findViewById(R.id.tab_layout);
         tab_layout.addOnTabSelectedListener(new SortingTabsOnTabSelectedListener(this));
@@ -182,6 +201,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.options_menu, menu);
 
+
         SearchManager searchManager = (SearchManager)getSystemService(Context.SEARCH_SERVICE);
         SearchView searchView = (SearchView)menu.findItem(R.id.menu_search).getActionView();
         searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
@@ -200,6 +220,10 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+
+        if (toggle.onOptionsItemSelected(item))
+            return true;
+
         switch (item.getItemId()){
             case R.id.preference_menu:
 
@@ -224,7 +248,7 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
 
-        return true;
+        return super.onOptionsItemSelected(item);
     }
 
 
@@ -303,6 +327,12 @@ public class MainActivity extends AppCompatActivity {
 
     public ListView getListView(){
         return drawer_list_view;
+    }
+
+    @Override
+    protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        toggle.syncState();
     }
 
 }
